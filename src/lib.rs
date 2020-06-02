@@ -276,10 +276,10 @@ impl CapabilityProvider for RedisKVProvider {
         );
 
         match op {
-            OP_BIND_ACTOR if actor == "system" => {
+            OP_BIND_ACTOR if actor == SYSTEM_ACTOR => {
                 self.configure(deserialize::<CapabilityConfiguration>(msg).unwrap())
             }
-            OP_REMOVE_ACTOR if actor == "system" => {
+            OP_REMOVE_ACTOR if actor == SYSTEM_ACTOR => {
                 self.remove_actor(deserialize::<CapabilityConfiguration>(msg).unwrap())
             }
             OP_GET_CAPABILITY_DESCRIPTOR if actor == SYSTEM_ACTOR => self.get_descriptor(),
